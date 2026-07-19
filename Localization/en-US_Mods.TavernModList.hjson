@@ -6,9 +6,30 @@ Items: {
 		DisplayName: "Test Sword"
 		Tooltip:
 			'''
-			Template of an item
-			Replacing this tooltip is duty 
-			It's snowing on Mt.Fuji
+			Test sword for an example
 			'''
+	}
+
+	GoldenFruit: {
+		DisplayName: "Golden Fruit"
+		Tooltip:
+			'''
+			A shimmering, delicious fruit, It looks like it could sell for a pretty penny. (Suggested by Eefy)
+			'''
+	}
+
+	GuineaPigBall: {
+		DisplayName: "Guinea Pig Ball"
+		Tooltip:
+			'''
+			Summons a guinea pig to fight for you. (Suggested by Frog)
+			'''
+	}
+}
+
+Buffs: {
+	GuineaPigBuff: {
+		DisplayName: "Guinea Pig"
+		Description: "A guinea pig is fighting for you"
 	}
 }
