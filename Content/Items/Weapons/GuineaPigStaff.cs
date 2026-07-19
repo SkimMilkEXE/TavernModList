@@ -8,11 +8,12 @@ using TavernModList.Content.Projectiles;
 
 namespace TavernModList.Content.Items.Weapons
 {
-	public class GuineaPigBall : ModItem
+	public class GuineaPigStaff : ModItem
 	{
 		public override void SetDefaults()
 		{
-			Item.damage = 15;
+			// Stats match the Spider Staff, vanilla's first post-Wall of Flesh summon weapon.
+			Item.damage = 17;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 10;
 			Item.width = 20;
@@ -21,9 +22,9 @@ namespace TavernModList.Content.Items.Weapons
 			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.noMelee = true;
-			Item.knockBack = 2;
-			Item.value = Item.buyPrice(gold: 1);
-			Item.rare = ItemRarityID.Blue;
+			Item.knockBack = 1.5f;
+			Item.value = Item.sellPrice(gold: 3);
+			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = SoundID.Item44;
 			Item.noUseGraphic = true;
 

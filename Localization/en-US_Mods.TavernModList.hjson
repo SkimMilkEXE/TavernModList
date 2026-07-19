@@ -18,8 +18,8 @@ Items: {
 			'''
 	}
 
-	GuineaPigBall: {
-		DisplayName: "Guinea Pig Ball"
+	GuineaPigStaff: {
+		DisplayName: "Guinea Pig Staff"
 		Tooltip:
 			'''
 			Summons a guinea pig to fight for you. (Suggested by Frog)

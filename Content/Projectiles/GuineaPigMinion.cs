@@ -27,7 +27,8 @@ namespace TavernModList.Content.Projectiles
 			Projectile.netImportant = true;
 		}
 
-		public override bool MinionContactDamage() => true;
+		// Ticks down between rainbow shots; only the owner's client fires.
+		private int attackCooldown;
 
 		public override void AI()
 		{
@@ -65,6 +66,21 @@ namespace TavernModList.Content.Projectiles
 
 			Projectile.rotation = Projectile.velocity.X * 0.05f;
 			Projectile.spriteDirection = Projectile.velocity.X > 0 ? 1 : -1;
+
+			if (attackCooldown > 0)
+			{
+				attackCooldown--;
+			}
+			else if (target != null)
+			{
+				if (Projectile.owner == Main.myPlayer)
+				{
+					Vector2 shootVelocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.UnitY) * 10f;
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, shootVelocity, ProjectileID.RainbowRodBullet, Projectile.damage, Projectile.knockBack, Projectile.owner);
+				}
+
+				attackCooldown = 40;
+			}
 		}
 	}
 }
