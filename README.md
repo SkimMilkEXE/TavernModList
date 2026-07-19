@@ -4,7 +4,7 @@ A Terraria mod pack built from suggestions thrown around by me and my friends. J
 
 ## What is this?
 
-No grand theme, no roadmap, just whatever content sounds fun to add next. Expect a grab bag of items, weapons, and other odds and ends over time.
+No grand theme, no roadmap, just whatever content sounds fun to add next.
 
 ## Building
 
