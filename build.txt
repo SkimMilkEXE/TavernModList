@@ -1,0 +1,3 @@
+displayName = Tavern Friend Items
+author = SkimMilkEXE
+version = 0.1
