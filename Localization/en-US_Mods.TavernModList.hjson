@@ -33,6 +33,41 @@ Items: {
 			A remote that somehow spawns rockets? is it magic? who knows. (Suggested by IonF3)
 			'''
 	}
+
+	IronSuitHelmet: {
+		DisplayName: "Iron Suit Helmet"
+		Tooltip: "(Suggested by Avery)"
+	}
+
+	IronSuitBodyArmor: {
+		DisplayName: "Iron Suit Chestplate"
+		Tooltip: "(Suggested by Avery)"
+	}
+
+	IronSuitLeggings: {
+		DisplayName: "Iron Suit Leggings"
+		Tooltip: "(Suggested by Avery)"
+	}
+
+	IronSuitBlaster: {
+		DisplayName: "Iron Suit Blaster"
+		Tooltip:
+			'''
+			The suit's built-in laser cannon
+			Only fires while wearing the full Iron Suit
+			(Suggested by Avery)
+			'''
+	}
+
+	IronSuitUnibeam: {
+		DisplayName: "Iron Suit Unibeam"
+		Tooltip:
+			'''
+			Fires a devastating chest-mounted beam
+			Only fires while wearing the full Iron Suit
+			(Suggested by Avery)
+			'''
+	}
 }
 
 Buffs: {
