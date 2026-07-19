@@ -25,6 +25,14 @@ Items: {
 			Summons a guinea pig to fight for you. (Suggested by Frog)
 			'''
 	}
+
+	RemoteDetonator: {
+		DisplayName: "Remote Detonator"
+		Tooltip:
+			'''
+			A remote that somehow spawns rockets? is it magic? who knows. (Suggested by IonF3)
+			'''
+	}
 }
 
 Buffs: {
