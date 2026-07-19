@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace TavernModList.Content.Items
+namespace TavernModList.Content.Items.Misc
 {
     // The Display Name and Tooltip of this item can be edited in the 'Localization/en-US_Mods.TavernModList.hjson' file.
     public class GoldenFruit : ModItem

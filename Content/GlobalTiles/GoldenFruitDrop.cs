@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TavernModList.Content.Items;
+using TavernModList.Content.Items.Misc;
 
 namespace TavernModList.Content.GlobalTiles
 {
