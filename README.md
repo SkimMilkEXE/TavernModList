@@ -4,7 +4,16 @@ A Terraria mod pack built from suggestions thrown around by me and my friends. J
 
 ## What is this?
 
-No grand theme, no roadmap, just whatever content sounds fun to add next.
+No grand theme, no roadmap, just whatever content sounds fun to add next. Somebody says something dumb or cool in the Discord, and a few days later it's a weapon. 
+
+Some Items suggested:
+
+- A golden fruit that trees occasionally drop(it's an infinite money glitch trust), because why not
+- A summonable guinea pig that farts rainbows and shoots them because it can
+- A remote that fires rockets for reasons nobody has explained
+- A full Iron Man-style suit for the post-Moon Lord crowd, complete with flight, a blaster, and a unibeam
+
+Expect more nonsense
 
 ## Building
 
