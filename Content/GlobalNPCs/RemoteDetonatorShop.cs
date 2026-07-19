@@ -1,4 +1,3 @@
-using Terraria.GameContent.Shops;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TavernModList.Content.Items.Weapons;
