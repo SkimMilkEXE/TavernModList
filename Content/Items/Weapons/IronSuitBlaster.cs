@@ -37,7 +37,7 @@ namespace TavernModList.Content.Items.Weapons
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.LunarBar, 5);
+			recipe.AddIngredient(ItemID.LunarBar, 15);
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.Register();
 		}
