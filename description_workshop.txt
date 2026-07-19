@@ -1,1 +1,7 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+[h1]TavernModList[/h1]
+
+A Terraria mod pack built from suggestions thrown around by me and my friends. Just a personal project made for fun, mostly it's a home for random ideas we come up with while playing and want to see in the game.
+
+[h1]What is this?[/h1]
+
+No grand theme, no roadmap, just whatever content sounds fun to add next. Expect a grab bag of items, weapons, and other odds and ends over time.

@@ -11,7 +11,7 @@ namespace TavernModList.Content.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			Main.projFrames[Projectile.type] = 1;
+			Main.projFrames[Projectile.type] = 2; // 2 frames stacked vertically in GuineaPigMinion.png
 			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
 		}
 
@@ -66,6 +66,22 @@ namespace TavernModList.Content.Projectiles
 
 			Projectile.rotation = Projectile.velocity.X * 0.05f;
 			Projectile.spriteDirection = Projectile.velocity.X > 0 ? 1 : -1;
+
+			// Only animate while there's a target to attack; hold on frame 0 otherwise.
+			if (target != null)
+			{
+				Projectile.frameCounter++;
+				if (Projectile.frameCounter >= 5)
+				{
+					Projectile.frameCounter = 0;
+					Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
+				}
+			}
+			else
+			{
+				Projectile.frameCounter = 0;
+				Projectile.frame = 0;
+			}
 
 			if (attackCooldown > 0)
 			{
