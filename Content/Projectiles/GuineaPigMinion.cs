@@ -13,7 +13,7 @@ namespace TavernModList.Content.Projectiles
 	public class GuineaPigMinion : ModProjectile
 	{
 		// Add more file names here as you make more colors; each needs a matching .png next to this file.
-		private static readonly string[] SkinNames = { "GuineaPigMinion", "GuineaPigMinion_Orange", "GuineaPigMinion_Tan",  "GuineaPigMinion_Tan", "GuineaPigMinion_Oreo"} ;
+		private static readonly string[] SkinNames = { "GuineaPigMinion", "GuineaPigMinion_Orange", "GuineaPigMinion_Tan",  "GuineaPigMinion_Tan", "GuineaPigMinion_Oreo", "GuineaPigMinion_Peanut"} ;
 		private static Asset<Texture2D>[] skins;
 
 		public override void SetStaticDefaults()
