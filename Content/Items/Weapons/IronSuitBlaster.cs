@@ -10,12 +10,12 @@ namespace TavernModList.Content.Items.Weapons
 		public override void SetDefaults()
 		{
 			// Fast, ammoless repeater - the suit's built-in laser, not a held gun.
-			Item.damage = 60;
+			Item.damage = 90;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 24;
 			Item.height = 24;
-			Item.useTime = 10;
-			Item.useAnimation = 10;
+			Item.useTime = 8;
+			Item.useAnimation = 8;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.noUseGraphic = true;

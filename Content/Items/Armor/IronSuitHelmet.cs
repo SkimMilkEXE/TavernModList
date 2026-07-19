@@ -34,9 +34,15 @@ namespace TavernModList.Content.Items.Armor
 			return body.type == ModContent.ItemType<IronSuitBodyArmor>() && legs.type == ModContent.ItemType<IronSuitLeggings>();
 		}
 
+		public override void UpdateEquip(Player player)
+		{
+			player.GetDamage(DamageClass.Ranged) += 0.10f;
+		}
+
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Grants flight and unlocks the suit's blaster and unibeam";
+			player.setBonus = "Grants flight, +15% ranged damage, and unlocks the suit's blaster and unibeam";
+			player.GetDamage(DamageClass.Ranged) += 0.15f;
 			player.GetModPlayer<IronSuitPlayer>().fullSetActive = true;
 		}
 	}

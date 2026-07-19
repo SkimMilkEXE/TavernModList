@@ -11,9 +11,8 @@ namespace TavernModList.Content.Items.Weapons
 	{
 		public override void SetDefaults()
 		{
-			// Continuous channeled beam, 5 beams per shot fanned out like the Last Prism. Per-beam
-			// damage is lower than the single-beam version since 5 now fire each trigger.
-			Item.damage = 8;
+			// Continuous channeled beam, 5 beams per shot fanned out like the Last Prism.
+			Item.damage = 20;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 24;
 			Item.height = 24;

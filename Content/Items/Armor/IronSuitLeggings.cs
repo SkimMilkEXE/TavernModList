@@ -11,9 +11,14 @@ namespace TavernModList.Content.Items.Armor
 		{
 			Item.width = 20;
 			Item.height = 20;
-			Item.defense = 12;
+			Item.defense = 18;
 			Item.value = Item.sellPrice(gold: 20);
 			Item.rare = ItemRarityID.Red;
+		}
+
+		public override void UpdateEquip(Player player)
+		{
+			player.GetAttackSpeed(DamageClass.Ranged) += 0.10f;
 		}
 
 		public override void AddRecipes()

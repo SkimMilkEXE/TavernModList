@@ -3,54 +3,42 @@
 
 Items: {
 	TestSword: {
-		DisplayName: "Test Sword"
-		Tooltip:
-			'''
-			Test sword for an example
-			'''
+		DisplayName: Test Sword
+		Tooltip: Test sword for an example
 	}
 
 	GoldenFruit: {
-		DisplayName: "Golden Fruit"
-		Tooltip:
-			'''
-			A shimmering, delicious fruit, It looks like it could sell for a pretty penny. (Suggested by Eefy)
-			'''
+		DisplayName: Golden Fruit
+		Tooltip: A shimmering, delicious fruit, It looks like it could sell for a pretty penny. (Suggested by Eefy)
 	}
 
 	GuineaPigStaff: {
-		DisplayName: "Guinea Pig Staff"
-		Tooltip:
-			'''
-			Summons a guinea pig to fight for you. (Suggested by Frog)
-			'''
+		DisplayName: Guinea Pig Staff
+		Tooltip: Summons a guinea pig to fight for you. (Suggested by Frog)
 	}
 
 	RemoteDetonator: {
-		DisplayName: "Remote Detonator"
-		Tooltip:
-			'''
-			A remote that somehow spawns rockets? is it magic? who knows. (Suggested by IonF3)
-			'''
+		DisplayName: Remote Detonator
+		Tooltip: A remote that somehow spawns rockets? is it magic? who knows. (Suggested by IonF3)
 	}
 
 	IronSuitHelmet: {
-		DisplayName: "Iron Suit Helmet"
-		Tooltip: "(Suggested by Avery)"
+		DisplayName: Iron Suit Helmet
+		Tooltip: (Suggested by Avery)
 	}
 
 	IronSuitBodyArmor: {
-		DisplayName: "Iron Suit Chestplate"
-		Tooltip: "(Suggested by Avery)"
+		DisplayName: Iron Suit Chestplate
+		Tooltip: (Suggested by Avery)
 	}
 
 	IronSuitLeggings: {
-		DisplayName: "Iron Suit Leggings"
-		Tooltip: "(Suggested by Avery)"
+		DisplayName: Iron Suit Leggings
+		Tooltip: (Suggested by Avery)
 	}
 
 	IronSuitBlaster: {
-		DisplayName: "Iron Suit Blaster"
+		DisplayName: Iron Suit Blaster
 		Tooltip:
 			'''
 			The suit's built-in laser cannon
@@ -60,7 +48,7 @@ Items: {
 	}
 
 	IronSuitUnibeam: {
-		DisplayName: "Iron Suit Unibeam"
+		DisplayName: Iron Suit Unibeam
 		Tooltip:
 			'''
 			Fires a devastating chest-mounted beam
@@ -72,7 +60,9 @@ Items: {
 
 Buffs: {
 	GuineaPigBuff: {
-		DisplayName: "Guinea Pig"
-		Description: "A guinea pig is fighting for you"
+		DisplayName: Guinea Pig
+		Description: A guinea pig is fighting for you
 	}
 }
+
+Projectiles.GuineaPigMinion.DisplayName: Guinea Pig Minion
