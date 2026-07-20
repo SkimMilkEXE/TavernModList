@@ -12,8 +12,7 @@ namespace TavernModList.Content.Items.Weapons
 	{
 		public override void SetDefaults()
 		{
-			// Stats match the Spider Staff, vanilla's first post-Wall of Flesh summon weapon.
-			Item.damage = 17;
+			Item.damage = 25;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 10;
 			Item.width = 20;
@@ -38,6 +37,19 @@ namespace TavernModList.Content.Items.Weapons
 		{
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 			return false;
+		}
+
+		// Fallback craft: any one banner from the drop pool (see GuineaPigStaffDrop) makes the staff,
+		// for players unlucky on the direct drop. Dark Caster has no vanilla banner, so it's not included.
+		public override void AddRecipes()
+		{
+			foreach (int bannerType in new[] { ItemID.CursedSkullBanner, ItemID.RaggedCasterBanner, ItemID.NecromancerBanner, ItemID.GiantCursedSkullBanner })
+			{
+				CreateRecipe()
+					.AddIngredient(bannerType)
+					.AddTile(TileID.Anvils)
+					.Register();
+			}
 		}
 	}
 }
