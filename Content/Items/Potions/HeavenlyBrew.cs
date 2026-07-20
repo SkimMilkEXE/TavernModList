@@ -34,11 +34,11 @@ namespace TavernModList.Content.Items.Potions
 		public override void AddRecipes()
 		{
 			CreateRecipe()
-				.AddIngredient(ItemID.CrystalShard, 3)
-				.AddIngredient(ItemID.UnicornHorn, 2)
-				.AddIngredient(ItemID.PixieDust, 5)
+				.AddIngredient(ItemID.Daybloom, 1)
+				.AddIngredient(ItemID.Bone, 5)
+				.AddIngredient(ItemID.SoulofMight, 1)
 				.AddIngredient(ItemID.BottledWater)
-				.AddTile(TileID.Bottles)
+				.AddTile(TileID.AlchemyTable)
 				.Register();
 		}
 	}
