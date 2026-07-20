@@ -18,7 +18,7 @@ namespace TavernModList.Content.ItemBrowser
 		private readonly Mod _mod;
 		private readonly UIList _list = new();
 		private readonly SearchBox _searchBox = new("Search items...");
-		private readonly UIElement _detailPanel = new();
+		private readonly UIList _detailList = new();
 		private List<ModItem> _allItems = new();
 
 		public ItemBrowserState(Mod mod)
@@ -54,6 +54,7 @@ namespace TavernModList.Content.ItemBrowser
 			_list.Height.Set(-40f, 1f);
 			_list.Top.Set(40f, 0f);
 			_list.ListPadding = 4f;
+			_list.ManualSortMethod = _ => { };
 			panel.Append(_list);
 
 			UIScrollbar scrollbar = new();
@@ -63,11 +64,20 @@ namespace TavernModList.Content.ItemBrowser
 			panel.Append(scrollbar);
 			_list.SetScrollbar(scrollbar);
 
-			_detailPanel.Width.Set(-210f, 1f);
-			_detailPanel.Height.Set(-10f, 1f);
-			_detailPanel.Top.Set(0f, 0f);
-			_detailPanel.Left.Set(210f, 0f);
-			panel.Append(_detailPanel);
+			_detailList.Width.Set(320f, 0f);
+			_detailList.Height.Set(-10f, 1f);
+			_detailList.Top.Set(0f, 0f);
+			_detailList.Left.Set(210f, 0f);
+			_detailList.ListPadding = 6f;
+			_detailList.ManualSortMethod = _ => { };
+			panel.Append(_detailList);
+
+			UIScrollbar detailScrollbar = new();
+			detailScrollbar.Height.Set(-10f, 1f);
+			detailScrollbar.Top.Set(0f, 0f);
+			detailScrollbar.Left.Set(534f, 0f);
+			panel.Append(detailScrollbar);
+			_detailList.SetScrollbar(detailScrollbar);
 
 			_allItems = _mod.GetContent<ModItem>().OrderBy(item => item.Item.Name).ToList();
 			Filter();
@@ -89,17 +99,15 @@ namespace TavernModList.Content.ItemBrowser
 
 		private void ShowDetailFor(ModItem item)
 		{
-			_detailPanel.RemoveAllChildren();
+			_detailList.Clear();
 
 			if (item == null)
 			{
-				AddDetailLine("Click an item to see how to get it", 0, 1f, false);
+				AddDetailLine("Click an item to see how to get it", 1f, false);
 				return;
 			}
 
-			int line = 0;
-			AddDetailLine(item.DisplayName.Value, line++, 1.1f, true);
-			line++;
+			AddDetailLine(item.DisplayName.Value, 1.1f, true);
 
 			bool foundRecipe = false;
 			for (int i = 0; i < Recipe.numRecipes; i++)
@@ -112,43 +120,38 @@ namespace TavernModList.Content.ItemBrowser
 
 				if (foundRecipe)
 				{
-					AddDetailLine("- or -", line++, 0.9f, false);
+					AddDetailLine("- or -", 0.9f, false);
 				}
 
 				foundRecipe = true;
-				AddDetailLine("Crafted from:", line++, 1f, false);
+				AddDetailLine("Crafted from:", 1f, false);
 				foreach (Item ingredient in recipe.requiredItem)
 				{
-					AddDetailLine($"  {ingredient.stack}x {Lang.GetItemNameValue(ingredient.type)}", line++, 0.9f, false);
+					AddDetailLine($"  {ingredient.stack}x {Lang.GetItemNameValue(ingredient.type)}", 0.9f, false);
 				}
 
 				if (recipe.requiredTile.Count > 0)
 				{
 					string stations = string.Join(", ", recipe.requiredTile.Select(TileID.Search.GetName));
-					AddDetailLine($"  at: {stations}", line++, 0.9f, false);
+					AddDetailLine($"  at: {stations}", 0.9f, false);
 				}
-
-				line++;
 			}
 
 			if (!foundRecipe)
 			{
-				AddDetailLine("Not craftable", line++, 1f, false);
-				line++;
+				AddDetailLine("Not craftable", 1f, false);
 			}
 
 			if (item is IObtainedFrom obtainedFrom)
 			{
-				AddDetailLine("Obtained from:", line++, 1f, false);
-				AddDetailLine($"  {obtainedFrom.ObtainedFromDescription}", line++, 0.9f, false);
+				AddDetailLine("Obtained from:", 1f, false);
+				AddDetailLine($"  {obtainedFrom.ObtainedFromDescription}", 0.9f, false);
 			}
 		}
 
-		private void AddDetailLine(string text, int line, float scale, bool large)
+		private void AddDetailLine(string text, float scale, bool large)
 		{
-			UIText element = new(text, scale, large);
-			element.Top.Set(line * 22f, 0f);
-			_detailPanel.Append(element);
+			_detailList.Add(new UIText(text, scale, large));
 		}
 
 		// Custom text box: the vanilla UIFocusInputTextField class isn't accessible outside tModLoader's own code.
