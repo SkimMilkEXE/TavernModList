@@ -56,6 +56,11 @@ Items: {
 			(Suggested by Avery)
 			'''
 	}
+
+	LuckyClover: {
+		DisplayName: Lucky Clover
+		Tooltip: Increases fishing power (Suggested by Butterpal)
+	}
 }
 
 Buffs: {
