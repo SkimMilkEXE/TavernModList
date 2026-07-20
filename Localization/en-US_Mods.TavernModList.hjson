@@ -9,32 +9,58 @@ Items: {
 
 	GoldenFruit: {
 		DisplayName: Golden Fruit
-		Tooltip: A shimmering, delicious fruit, It looks like it could sell for a pretty penny. (Suggested by Eefy)
+		Tooltip:
+			'''
+			A shimmering, delicious fruit
+			[c/FFD700:It looks like it could sell for a pretty penny]
+			(Suggested by Eefy)
+			'''
 	}
 
 	GuineaPigStaff: {
 		DisplayName: Guinea Pig Staff
-		Tooltip: Summons a guinea pig to fight for you. (Suggested by Frog)
+		Tooltip:
+			'''
+			Summons a guinea pig to fight for you
+			[c/FF69B4:It's fluffier than it looks]
+			(Suggested by Frog)
+			'''
 	}
 
 	RemoteDetonator: {
 		DisplayName: Remote Detonator
-		Tooltip: A remote that somehow spawns rockets? is it magic? who knows. (Suggested by IonF3)
+		Tooltip:
+			'''
+			[c/FF4500:A remote that somehow spawns rockets? Is it magic? Who knows]
+			(Suggested by IonF3)
+			'''
 	}
 
 	IronSuitHelmet: {
 		DisplayName: Iron Suit Helmet
-		Tooltip: (Suggested by Avery)
+		Tooltip:
+			'''
+			[c/B22222:Engineered for the modern hero]
+			(Suggested by Avery)
+			'''
 	}
 
 	IronSuitBodyArmor: {
 		DisplayName: Iron Suit Chestplate
-		Tooltip: (Suggested by Avery)
+		Tooltip:
+			'''
+			[c/B22222:Houses the suit's arc reactor core]
+			(Suggested by Avery)
+			'''
 	}
 
 	IronSuitLeggings: {
 		DisplayName: Iron Suit Leggings
-		Tooltip: (Suggested by Avery)
+		Tooltip:
+			'''
+			[c/B22222:Built for flight and hard landings]
+			(Suggested by Avery)
+			'''
 	}
 
 	IronSuitBlaster: {
@@ -43,6 +69,7 @@ Items: {
 			'''
 			The suit's built-in laser cannon
 			Only fires while wearing the full Iron Suit
+			[c/B22222:A concentrated beam of pure firepower]
 			(Suggested by Avery)
 			'''
 	}
@@ -53,20 +80,59 @@ Items: {
 			'''
 			Fires a devastating chest-mounted beam
 			Only fires while wearing the full Iron Suit
+			[c/B22222:The suit's signature attack]
 			(Suggested by Avery)
 			'''
 	}
 
 	LuckyClover: {
 		DisplayName: Lucky Clover
-		Tooltip: Increases fishing power (Suggested by Butterpal)
+		Tooltip:
+			'''
+			Increases fishing power
+			[c/32CD32:Fortune favors the lucky angler]
+			(Suggested by Butterpal)
+			'''
+	}
+
+	PrimeSpecs: {
+		DisplayName: Prime Specs
+		Tooltip:
+			'''
+			Displays a target's vitals whenever you land a hit
+			[c/00FFFF:Nothing escapes a proper analysis]
+			(Suggested by Prime)
+			'''
+	}
+
+	PrimesPotion: {
+		DisplayName: Prime's Potion
+		Tooltip:
+			'''
+			Prime's Special Brew, it seems strong
+			[c/FF0000:H][c/FF7F00:a][c/FFFF00:v][c/00FF00:e] [c/00BFFF:i][c/4B0082:t] [c/8B00FF:a][c/FF0000:l][c/FF7F00:l]
+			(Suggested by Prime)
+			'''
 	}
 }
 
 Buffs: {
 	GuineaPigBuff: {
 		DisplayName: Guinea Pig
-		Description: A guinea pig is fighting for you
+		Description:
+			'''
+			A guinea pig is fighting for you
+			[c/FF69B4:Squeak squeak, for justice]
+			'''
+	}
+
+	PrimesPotionBuff: {
+		DisplayName: Prime's Potion
+		Description:
+			'''
+			Every buff in the game is active
+			[c/FF0000:F][c/FF7F00:e][c/FFFF00:e][c/00FF00:l] [c/00BFFF:i][c/4B0082:n][c/8B00FF:v][c/FF0000:i][c/FF7F00:n][c/FFFF00:c][c/00FF00:i][c/00BFFF:b][c/4B0082:l][c/8B00FF:e]
+			'''
 	}
 }
 
