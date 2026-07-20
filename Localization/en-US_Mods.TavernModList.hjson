@@ -110,6 +110,17 @@ Items: {
 			(Suggested by Prime)
 			'''
 	}
+
+	HeavenlyBrew: {
+		DisplayName: Heavenly Brew
+		Tooltip:
+			'''
+			Restores 50% life, grants 3 seconds of invulnerability
+			Then increases movement speed and defense for the rest of its duration
+			[c/FFFACD:A gift from beyond the clouds]
+			(Suggested by Bev)
+			'''
+	}
 }
 
 Buffs: {
@@ -119,6 +130,15 @@ Buffs: {
 			'''
 			A guinea pig is fighting for you
 			[c/FF69B4:Squeak squeak, for justice]
+			'''
+	}
+
+	HeavenlyBrewBuff: {
+		DisplayName: Heavenly Brew
+		Description:
+			'''
+			Blessed with speed and protection
+			[c/FFFACD:The heavens are watching over you]
 			'''
 	}
 
