@@ -17,7 +17,7 @@ namespace TavernModList.Content.Items.Potions
 			Item.UseSound = SoundID.Item3;
 			Item.consumable = true;
 			Item.value = Item.sellPrice(gold: 50);
-			Item.rare = ItemRarityID.Rainbow;
+			Item.rare = ItemRarityID.Purple;
 			Item.buffType = ModContent.BuffType<PrimesPotionBuff>();
 			Item.buffTime = 18000; // 5 minutes
 		}
