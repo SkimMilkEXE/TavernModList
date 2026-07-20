@@ -1,13 +1,16 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TavernModList.Content.ItemBrowser;
 using TavernModList.Content.Players;
 
 namespace TavernModList.Content.Items.Accessories
 {
 	[AutoloadEquip(EquipType.Face)]
-	public class PrimeSpecs : ModItem
+	public class PrimeSpecs : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "Crafted at a Mythril or Orichalcum Anvil after defeating the Mechanical Bosses";
+
 		public override void SetDefaults()
 		{
 			Item.width = 20;

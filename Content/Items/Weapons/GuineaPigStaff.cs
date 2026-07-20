@@ -4,12 +4,15 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TavernModList.Content.Buffs;
+using TavernModList.Content.ItemBrowser;
 using TavernModList.Content.Projectiles;
 
 namespace TavernModList.Content.Items.Weapons
 {
-	public class GuineaPigStaff : ModItem
+	public class GuineaPigStaff : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "~2.9% drop from Cursed Skulls, Dark/Ragged Casters, Necromancers, or Giant Cursed Skulls (Hardmode)";
+
 		public override void SetDefaults()
 		{
 			Item.damage = 25;

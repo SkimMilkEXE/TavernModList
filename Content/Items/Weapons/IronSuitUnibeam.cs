@@ -3,12 +3,15 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TavernModList.Content.ItemBrowser;
 using TavernModList.Content.Players;
 
 namespace TavernModList.Content.Items.Weapons
 {
-	public class IronSuitUnibeam : ModItem
+	public class IronSuitUnibeam : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "Crafted at the Lunar Crafting Station after defeating Moon Lord";
+
 		public override void SetDefaults()
 		{
 			// Continuous channeled beam, 5 beams per shot fanned out like the Last Prism.

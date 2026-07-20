@@ -1,12 +1,15 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TavernModList.Content.ItemBrowser;
 
 namespace TavernModList.Content.Items.Armor
 {
 	[AutoloadEquip(EquipType.Body)]
-	public class IronSuitBodyArmor : ModItem
+	public class IronSuitBodyArmor : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "Crafted at the Lunar Crafting Station after defeating Moon Lord";
+
 		public override void SetDefaults()
 		{
 			Item.width = 20;

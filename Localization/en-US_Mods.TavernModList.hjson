@@ -2,7 +2,6 @@
 # Please read https://github.com/tModLoader/tModLoader/wiki/Localization to learn more about localization and these files.
 
 Items: {
-
 	GoldenFruit: {
 		DisplayName: Golden Fruit
 		Tooltip:
@@ -153,3 +152,4 @@ Buffs: {
 }
 
 Projectiles.GuineaPigMinion.DisplayName: Guinea Pig Minion
+"Keybinds.Toggle Item Browser.DisplayName": Toggle  Item  Browser

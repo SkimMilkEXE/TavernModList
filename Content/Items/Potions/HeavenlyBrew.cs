@@ -3,11 +3,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TavernModList.Content.Buffs;
+using TavernModList.Content.ItemBrowser;
 
 namespace TavernModList.Content.Items.Potions
 {
-	public class HeavenlyBrew : ModItem
+	public class HeavenlyBrew : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "~14% drop from Empress of Light";
+
 		public override void SetDefaults()
 		{
 			Item.width = 20;

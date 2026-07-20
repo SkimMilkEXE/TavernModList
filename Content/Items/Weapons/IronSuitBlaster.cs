@@ -1,12 +1,15 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TavernModList.Content.ItemBrowser;
 using TavernModList.Content.Players;
 
 namespace TavernModList.Content.Items.Weapons
 {
-	public class IronSuitBlaster : ModItem
+	public class IronSuitBlaster : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "Crafted at the Lunar Crafting Station after defeating Moon Lord";
+
 		public override void SetDefaults()
 		{
 			// Fast, ammoless repeater - the suit's built-in laser, not a held gun.

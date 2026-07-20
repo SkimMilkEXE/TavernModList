@@ -1,11 +1,14 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TavernModList.Content.ItemBrowser;
 
 namespace TavernModList.Content.Items.Weapons
 {
-	public class RemoteDetonator : ModItem
+	public class RemoteDetonator : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "Sold by the Cyborg (post-Plantera NPC)";
+
 		public override void SetDefaults()
 		{
 			// Stats in line with the Proximity Mine Launcher, the Cyborg's own post-Plantera explosive launcher.

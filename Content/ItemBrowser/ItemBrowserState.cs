@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameInput;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -17,6 +18,7 @@ namespace TavernModList.Content.ItemBrowser
 		private readonly Mod _mod;
 		private readonly UIList _list = new();
 		private readonly SearchBox _searchBox = new("Search items...");
+		private readonly UIElement _detailPanel = new();
 		private List<ModItem> _allItems = new();
 
 		public ItemBrowserState(Mod mod)
@@ -28,7 +30,7 @@ namespace TavernModList.Content.ItemBrowser
 		{
 			UIPanel panel = new()
 			{
-				Width = { Pixels = 320 },
+				Width = { Pixels = 560 },
 				Height = { Pixels = 420 },
 				HAlign = 0.5f,
 				VAlign = 0.5f,
@@ -42,13 +44,13 @@ namespace TavernModList.Content.ItemBrowser
 			title.Top.Set(-30f, 0f);
 			panel.Append(title);
 
-			_searchBox.Width.Set(-24f, 1f);
+			_searchBox.Width.Set(180f, 0f);
 			_searchBox.Height.Set(30f, 0f);
 			_searchBox.Top.Set(0f, 0f);
 			_searchBox.OnTextChange += (_, _) => Filter();
 			panel.Append(_searchBox);
 
-			_list.Width.Set(-25f, 1f);
+			_list.Width.Set(180f, 0f);
 			_list.Height.Set(-40f, 1f);
 			_list.Top.Set(40f, 0f);
 			_list.ListPadding = 4f;
@@ -57,12 +59,19 @@ namespace TavernModList.Content.ItemBrowser
 			UIScrollbar scrollbar = new();
 			scrollbar.Height.Set(-40f, 1f);
 			scrollbar.Top.Set(40f, 0f);
-			scrollbar.HAlign = 1f;
+			scrollbar.Left.Set(184f, 0f);
 			panel.Append(scrollbar);
 			_list.SetScrollbar(scrollbar);
 
+			_detailPanel.Width.Set(-210f, 1f);
+			_detailPanel.Height.Set(-10f, 1f);
+			_detailPanel.Top.Set(0f, 0f);
+			_detailPanel.Left.Set(210f, 0f);
+			panel.Append(_detailPanel);
+
 			_allItems = _mod.GetContent<ModItem>().OrderBy(item => item.Item.Name).ToList();
 			Filter();
+			ShowDetailFor(null);
 		}
 
 		private void Filter()
@@ -73,9 +82,73 @@ namespace TavernModList.Content.ItemBrowser
 			{
 				if (query.Length == 0 || item.DisplayName.Value.Contains(query, StringComparison.OrdinalIgnoreCase))
 				{
-					_list.Add(new ItemEntryElement(item.Item.type, item.DisplayName.Value));
+					_list.Add(new ItemEntryElement(item, ShowDetailFor));
 				}
 			}
+		}
+
+		private void ShowDetailFor(ModItem item)
+		{
+			_detailPanel.RemoveAllChildren();
+
+			if (item == null)
+			{
+				AddDetailLine("Click an item to see how to get it", 0, 1f, false);
+				return;
+			}
+
+			int line = 0;
+			AddDetailLine(item.DisplayName.Value, line++, 1.1f, true);
+			line++;
+
+			bool foundRecipe = false;
+			for (int i = 0; i < Recipe.numRecipes; i++)
+			{
+				Recipe recipe = Main.recipe[i];
+				if (recipe.createItem.type != item.Item.type)
+				{
+					continue;
+				}
+
+				if (foundRecipe)
+				{
+					AddDetailLine("- or -", line++, 0.9f, false);
+				}
+
+				foundRecipe = true;
+				AddDetailLine("Crafted from:", line++, 1f, false);
+				foreach (Item ingredient in recipe.requiredItem)
+				{
+					AddDetailLine($"  {ingredient.stack}x {Lang.GetItemNameValue(ingredient.type)}", line++, 0.9f, false);
+				}
+
+				if (recipe.requiredTile.Count > 0)
+				{
+					string stations = string.Join(", ", recipe.requiredTile.Select(TileID.Search.GetName));
+					AddDetailLine($"  at: {stations}", line++, 0.9f, false);
+				}
+
+				line++;
+			}
+
+			if (!foundRecipe)
+			{
+				AddDetailLine("Not craftable", line++, 1f, false);
+				line++;
+			}
+
+			if (item is IObtainedFrom obtainedFrom)
+			{
+				AddDetailLine("Obtained from:", line++, 1f, false);
+				AddDetailLine($"  {obtainedFrom.ObtainedFromDescription}", line++, 0.9f, false);
+			}
+		}
+
+		private void AddDetailLine(string text, int line, float scale, bool large)
+		{
+			UIText element = new(text, scale, large);
+			element.Top.Set(line * 22f, 0f);
+			_detailPanel.Append(element);
 		}
 
 		// Custom text box: the vanilla UIFocusInputTextField class isn't accessible outside tModLoader's own code.
@@ -137,15 +210,21 @@ namespace TavernModList.Content.ItemBrowser
 
 		private class ItemEntryElement : UIElement
 		{
-			private readonly int _itemType;
-			private readonly string _name;
+			private readonly ModItem _modItem;
+			private readonly Action<ModItem> _onClick;
 
-			public ItemEntryElement(int itemType, string name)
+			public ItemEntryElement(ModItem modItem, Action<ModItem> onClick)
 			{
-				_itemType = itemType;
-				_name = name;
+				_modItem = modItem;
+				_onClick = onClick;
 				Width.Set(0f, 1f);
 				Height.Set(36f, 0f);
+			}
+
+			public override void LeftClick(UIMouseEvent evt)
+			{
+				_onClick(_modItem);
+				base.LeftClick(evt);
 			}
 
 			protected override void DrawSelf(SpriteBatch spriteBatch)
@@ -157,13 +236,14 @@ namespace TavernModList.Content.ItemBrowser
 					Utils.DrawInvBG(spriteBatch, dims.ToRectangle(), Color.White * 0.2f);
 				}
 
-				Texture2D texture = TextureAssets.Item[_itemType].Value;
+				int itemType = _modItem.Item.type;
+				Texture2D texture = TextureAssets.Item[itemType].Value;
 				float scale = Math.Min(1f, 32f / Math.Max(texture.Width, texture.Height));
 				Vector2 iconPos = new(dims.X + 4f + texture.Width * scale / 2f, dims.Y + dims.Height / 2f);
 				spriteBatch.Draw(texture, iconPos, null, Color.White, 0f, new Vector2(texture.Width, texture.Height) / 2f, scale, SpriteEffects.None, 0f);
 
 				Vector2 textPos = new(dims.X + 44f, dims.Y + dims.Height / 2f - 10f);
-				Utils.DrawBorderString(spriteBatch, _name, textPos, Color.White, 1f, 0f, 0f, -1);
+				Utils.DrawBorderString(spriteBatch, _modItem.DisplayName.Value, textPos, Color.White, 1f, 0f, 0f, -1);
 			}
 		}
 	}

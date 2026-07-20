@@ -2,11 +2,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TavernModList.Content.Buffs;
+using TavernModList.Content.ItemBrowser;
 
 namespace TavernModList.Content.Items.Potions
 {
-	public class PrimesPotion : ModItem
+	public class PrimesPotion : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "1% drop from Moon Lord";
+
 		public override void SetDefaults()
 		{
 			Item.width = 20;

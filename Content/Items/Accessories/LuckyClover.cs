@@ -1,11 +1,14 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TavernModList.Content.ItemBrowser;
 
 namespace TavernModList.Content.Items.Accessories
 {
-	public class LuckyClover : ModItem
+	public class LuckyClover : ModItem, IObtainedFrom
 	{
+		public string ObtainedFromDescription => "Rare fishing catch in Hallow water";
+
 		public override void SetDefaults()
 		{
 			Item.width = 20;
