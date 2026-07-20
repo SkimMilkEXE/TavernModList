@@ -86,7 +86,21 @@ namespace TavernModList.Content.Projectiles
 				.OrderBy(npc => Vector2.Distance(npc.Center, Projectile.Center))
 				.FirstOrDefault();
 
-			Vector2 destination = target != null ? target.Center : owner.Center + new Vector2(-30 * owner.direction, -10);
+			const float standoffRange = 220f; // Ranged minion: hover at this distance instead of walking onto the target.
+			Vector2 destination;
+			if (target != null)
+			{
+				Vector2 awayFromTarget = Projectile.Center - target.Center;
+				if (awayFromTarget == Vector2.Zero)
+				{
+					awayFromTarget = new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f));
+				}
+				destination = target.Center + awayFromTarget.SafeNormalize(Vector2.UnitY) * standoffRange;
+			}
+			else
+			{
+				destination = owner.Center + new Vector2(-30 * owner.direction, -10);
+			}
 			Vector2 toDestination = destination - Projectile.Center;
 			float speed = target != null ? 12f : 8f;
 

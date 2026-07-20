@@ -14,9 +14,10 @@ namespace TavernModList.Content.Items.Misc
 			Item.useTime = 20;
 			Item.useAnimation = 20;
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.value = Item.buyPrice(platinum: 10);
+			Item.value = Item.sellPrice(platinum: 10);
 			Item.rare = ItemRarityID.Red;
 			Item.autoReuse = true;
+			Item.maxStack = 999;
         }
     }
 }

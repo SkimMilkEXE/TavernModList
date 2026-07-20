@@ -25,7 +25,6 @@ namespace TavernModList.Content.Items.Weapons
 			Item.value = Item.sellPrice(gold: 3);
 			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = SoundID.Item44;
-			Item.noUseGraphic = true;
 
 			// buffType/shoot link the item to its minion buff and minion projectile.
 			Item.buffType = ModContent.BuffType<GuineaPigBuff>();
@@ -35,6 +34,8 @@ namespace TavernModList.Content.Items.Weapons
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
+			// AddBuff isn't automatic for minions; without this the buff (and its icon) never gets applied.
+			player.AddBuff(Item.buffType, 2);
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 			return false;
 		}
