@@ -20,6 +20,7 @@ namespace TavernModList.Content.Items.Potions
 			Item.useTime = 17;
 			Item.UseSound = SoundID.Item3;
 			Item.consumable = true;
+			Item.potion = true;
 			Item.value = Item.sellPrice(gold: 15);
 			Item.rare = ItemRarityID.Pink;
 			Item.buffType = ModContent.BuffType<HeavenlyBrewBuff>();
