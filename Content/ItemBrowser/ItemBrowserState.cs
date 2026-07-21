@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameInput;
@@ -241,9 +242,15 @@ namespace TavernModList.Content.ItemBrowser
 
 				int itemType = _modItem.Item.type;
 				Texture2D texture = TextureAssets.Item[itemType].Value;
-				float scale = Math.Min(1f, 32f / Math.Max(texture.Width, texture.Height));
-				Vector2 iconPos = new(dims.X + 4f + texture.Width * scale / 2f, dims.Y + dims.Height / 2f);
-				spriteBatch.Draw(texture, iconPos, null, Color.White, 0f, new Vector2(texture.Width, texture.Height) / 2f, scale, SpriteEffects.None, 0f);
+
+				// Animated items (e.g. Prime's Potion) store every frame in one tall texture;
+				// slice out just the current frame instead of drawing the whole sheet.
+				DrawAnimation animation = Main.itemAnimations[itemType];
+				Rectangle frame = animation != null ? animation.GetFrame(texture) : texture.Bounds;
+
+				float scale = Math.Min(1f, 32f / Math.Max(frame.Width, frame.Height));
+				Vector2 iconPos = new(dims.X + 4f + frame.Width * scale / 2f, dims.Y + dims.Height / 2f);
+				spriteBatch.Draw(texture, iconPos, frame, Color.White, 0f, new Vector2(frame.Width, frame.Height) / 2f, scale, SpriteEffects.None, 0f);
 
 				Vector2 textPos = new(dims.X + 44f, dims.Y + dims.Height / 2f - 10f);
 				Utils.DrawBorderString(spriteBatch, _modItem.DisplayName.Value, textPos, Color.White, 1f, 0f, 0f, -1);
