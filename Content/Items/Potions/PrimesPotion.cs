@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TavernModList.Content.Buffs;
@@ -10,9 +11,15 @@ namespace TavernModList.Content.Items.Potions
 	{
 		public string ObtainedFromDescription => "1% drop from Moon Lord";
 
+		public override void SetStaticDefaults()
+		{
+			// PrimesPotion.png is a vertical spritesheet: 8 frames, 12x26 each.
+			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 8, false));
+		}
+
 		public override void SetDefaults()
 		{
-			Item.width = 20;
+			Item.width = 12;
 			Item.height = 26;
 			Item.useStyle = ItemUseStyleID.DrinkLiquid;
 			Item.useAnimation = 17;
