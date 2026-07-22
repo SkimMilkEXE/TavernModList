@@ -120,6 +120,17 @@ Items: {
 			(Suggested by Bev)
 			'''
 	}
+
+	BloodyShell: {
+		DisplayName: Bloody Shell
+		Tooltip:
+			'''
+			Fires a spread of shells that leave a trail of blood
+			[c/8B0000:Torn loose from something that used to be alive]
+			(Suggested by Butterpal)
+			(Drawn by Butterpal)
+			'''
+	}
 }
 
 Buffs: {
