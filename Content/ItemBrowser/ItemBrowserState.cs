@@ -156,12 +156,14 @@ namespace TavernModList.Content.ItemBrowser
 		}
 
 		// Custom text box: the vanilla UIFocusInputTextField class isn't accessible outside tModLoader's own code.
+		// No click-to-focus here - this is the only text field in the browser, so it just always
+		// takes keyboard input while the browser is open (avoids a click/focus dispatch bug where
+		// clicking the box never actually started capturing input).
 		private class SearchBox : UIElement
 		{
 			public string Text { get; private set; } = string.Empty;
 
 			private readonly string _hint;
-			private bool _focused;
 
 			public event EventHandler OnTextChange;
 
@@ -170,33 +172,19 @@ namespace TavernModList.Content.ItemBrowser
 				_hint = hint;
 			}
 
-			public override void LeftClick(UIMouseEvent evt)
-			{
-				_focused = true;
-				base.LeftClick(evt);
-			}
-
 			public override void Update(GameTime gameTime)
 			{
 				base.Update(gameTime);
 
-				if (_focused && Main.mouseLeft && !ContainsPoint(Main.MouseScreen))
+				string updated = Main.GetInputText(Text, false);
+				if (updated != Text)
 				{
-					_focused = false;
+					Text = updated;
+					OnTextChange?.Invoke(this, EventArgs.Empty);
 				}
 
-				if (_focused)
-				{
-					string updated = Main.GetInputText(Text, false);
-					if (updated != Text)
-					{
-						Text = updated;
-						OnTextChange?.Invoke(this, EventArgs.Empty);
-					}
-
-					PlayerInput.WritingText = true;
-					Main.instance.HandleIME();
-				}
+				PlayerInput.WritingText = true;
+				Main.instance.HandleIME();
 			}
 
 			protected override void DrawSelf(SpriteBatch spriteBatch)
@@ -243,7 +231,7 @@ namespace TavernModList.Content.ItemBrowser
 				int itemType = _modItem.Item.type;
 				Texture2D texture = TextureAssets.Item[itemType].Value;
 
-				// Animated items (e.g. Prime's Potion) store every frame in one tall texture;
+				// Animated items store every frame in one tall texture;
 				// slice out just the current frame instead of drawing the whole sheet.
 				DrawAnimation animation = Main.itemAnimations[itemType];
 				Rectangle frame = animation != null ? animation.GetFrame(texture) : texture.Bounds;
